@@ -69,13 +69,13 @@ unsigned long last_push = 0;
 // WiFi password
 #define WIFI_PASSWORD "hoituivoich"
 // InfluxDB v2 server url, e.g. https://eu-central-1-1.aws.cloud2.influxdata.com (Use: InfluxDB UI -> Load Data -> Client Libraries)
-#define INFLUXDB_URL "https://influx.fat-space.com"
-// InfluxDB v2 server or cloud API authentication token (Use: InfluxDB UI -> Data -> Tokens -> <select token>)
-#define INFLUXDB_TOKEN "_1kfYsRcUrNt25DWVNgv-KgHsPGiWSU00Ev0jLykae7oNvZeNWQheVumHCF7PTvWxh3pt38eHyYbBYMy94oMWA=="
+#define INFLUXDB_URL "https://influxdb2.fat-space.com"
+// InfluxDB v2 server or cloud API token (Use: InfluxDB UI -> Data -> API Tokens -> <select token>)
+#define INFLUXDB_TOKEN "6kj_PfUQavAnlcmvoYyOitMnWtDiC1opyCFhNjM-920uOXeRMLwymHP5rxzFenPjUU-oHYnStwIarV6QR-ezrw=="
 // InfluxDB v2 organization id (Use: InfluxDB UI -> User -> About -> Common Ids )
 #define INFLUXDB_ORG "Fat Space"
 // InfluxDB v2 bucket name (Use: InfluxDB UI ->  Data -> Buckets)
-#define INFLUXDB_BUCKET "smart-energy-meter-dc"
+#define INFLUXDB_BUCKET "trac-dc-meter"
 
 // Set timezone string according to https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html
 // Examples:
@@ -204,6 +204,7 @@ void setup()
   }
   Serial.println();
 
+  client.setInsecure();
   sensor1.addTag("device", DEVICE);
 
   timeSync(TZ_INFO, "pool.ntp.org", "time.nis.gov");
